@@ -50,11 +50,14 @@ while opcion != 6:
 		print(f'\nSe añadió la cátedra {nombre} a la lista con éxito')
 #-----------------
 	elif opcion == 3:
+		if len(catedras) == 0:
+			print('La lista de cátedras se encuentra vacía.')
+			continue
 		print('Seleccione la cátedra que desea editar: ')
 		for j in range(0, len(catedras)):
 			print(f'{j}> {catedras[j][0]}')
 		catedraModificar = input()
-		while catedraModificar.isnumeric() == False or (0 > int(catedraModificar) > len(catedras) - 1) == True:
+		while catedraModificar.isnumeric() == False or (0 <= int(catedraModificar) <= len(catedras) - 1) == False:
 			print('Valor inválido, intente nuevamente.')
 			catedraModificar = input('Seleccione la cátedra que desea editar: ')
 		catedraModificar = int(catedraModificar)
@@ -63,7 +66,7 @@ while opcion != 6:
 		print('1> Código de cátedra.')
 		print('2> Carga horaria semanal.')
 		campoModificar = input()
-		while campoModificar.isnumeric() == False or (0 > int(campoModificar) > 2) == True:
+		while campoModificar.isnumeric() == False or (0 <= int(campoModificar) <= 2) == False:
 			print('Valor inválido, intente nuevamente.')
 			campoModificar = input('Seleccione el campo a modificar: ')
 			print('0> Nombre.')
@@ -87,6 +90,9 @@ while opcion != 6:
 			print(f'La carga horaria semanal se ha modificado de {cargaHorariaModificar} a {catedras[catedraModificar][2]} con éxito.')
 #-----------------
 	elif opcion == 4:
+		if len(catedras) == 0:
+			print('La lista de cátedras se encuentra vacía.')
+			continue
 		print('Seleccione la cátedra a remover de la lista: ')
 		for j in range(0, len(catedras)):
 			print(f'{j}> {catedras[j][0]}')
